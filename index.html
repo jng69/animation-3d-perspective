@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>3D PERSPECTIVE ANIMATION</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .flip-box {
+      position: absolute;
+      background-color: transparent;
+      width: 1060px;
+      height: 590px;
+      border: 1px solid #f1f1f1;
+      perspective: 1000px;
+      z-index:0;
+      overflow: hidden;
+    }
+    .model {
+      position: absolute;
+      background-color: transparent;
+      left: 100px;
+      width: 466px;
+      height: 590px;
+      z-index:1;
+      animation-name: animateModel;
+      animation-duration: 5s;
+      animation-timing-function: ease;
+      animation-delay: 0.5s;
+      animation-fill-mode: forwards;
+    }
+    .bg {
+      position: absolute;
+      background-color: transparent;
+      top: -20px;
+      left:-30px;
+      width: 1120px;
+      height: 630px;
+    }
+    .flip-box-inner {
+      animation-name: animate3D;
+      animation-duration: 5s;
+      animation-timing-function: ease;
+      animation-delay: 0.5s;
+      animation-fill-mode: forwards;
+      transform: rotateY(-5deg);
+      transition: transform 6s;
+      transform-style: preserve-3d;
+    }
+    .flip-box-front {
+      color: black;
+      width: 100%;
+      height: 100%;
+    }
+    @keyframes animate3D {
+        from{transform: rotateY(-5deg);}
+        to{transform: rotateY(5deg);}
+    }
+    @keyframes animateModel {
+        from{left:100px;}
+        to{left: 40px;}
+    }
+    </style>
+</head>
+<body>
+<div class="flip-box">
+<div class="model"><img src="https://freepngimg.com/thumb/girl/23163-2-woman-model-image.png" alt="Man"></div>
+  <div class="flip-box-inner">
+    <div class="flip-box-front">
+      <img src="https://images.unsplash.com/photo-1492666673288-3c4b4576ad9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3864&q=80" alt="background" class="bg">
+    </div>
+  </div>
+</div>
+<script>
+    /* var flipBox = document.querySelector('.flip-box-inner');
+    setTimeout(() => {
+        flipBox.classList.add('animate3D');
+        console.log('this fired')
+    },1000); */
+</script>
+</body>
+</html>
